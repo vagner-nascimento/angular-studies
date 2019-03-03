@@ -1,0 +1,8 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "outDir": "out",
+    "noEmitOnError": true,
+    "removeComments": true,
+  }
+}
