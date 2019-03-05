@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'jedi-academy';
+/*
+IMPORTANT NOTE: These objects are json representation of Student interface, founded in student component folder
+Remeber, you should to send boolean and numbers as it is, not strings
+*/
+  luke = {name: "Luke", isJedi: true, temple: "Coruscant"}
+  han  = {name: "Han Solo", isJedi: false}
+  yoda = {name: "Yoda Master", isJedi: true, temple: "Black Kaiser" }
+  leia = {name: "Leia Princess", isJedi: false }
 }
