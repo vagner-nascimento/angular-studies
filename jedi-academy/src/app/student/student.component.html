@@ -1,9 +1,16 @@
 <div>
   Student: {{student.name}}. Is he/she jedi? {{student.isJedi ? "Yes" : "No"}} <!-- Template interpolation {{val}}, brings component's attibutes to template -->
-  <div [hidden]="!student.isJedi"> <!-- Property Binding [prop]="val", another way to brings component's attibutes to template -->
+  <!-- <div [hidden]="!student.isJedi"> Property Binding [prop]="val", another way to brings component's attibutes to template -->
     <!-- IMPORTANT NOTE: When you need to pass values that aren't strings, is mandatory to use
           property binding sintax, otherwise, it will interpret as a sting and a boolean test 
           probally will fail, causing bugs in your application. -->
-    Jedi Temple: {{student.temple}}
+  <div *ngIf="student.isJedi"> 
+    <!-- NOTE: Directives: gives some behaviors for the DOM elements. *ngIf is a directive that
+         gives IF behavior for the DOM element.
+         Can also be writen like that: [ngIf]="student.isJedi" but the short way is mos commom.
+         Syntax: *ngDirectiveName="Type script expression"
+         That is better then use hidden property because the element is sended to DOM JUST if 
+         the test return true -->
+      Jedi Temple: {{student.temple}}
   </div>
 </div>
