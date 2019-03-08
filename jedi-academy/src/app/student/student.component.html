@@ -9,18 +9,18 @@
     Student: <a href="#" (click)="clicked()">{{student?.name}}</a> 
   <div *ngIf="student?.isJedi"> 
     <!-- Secure navigation operator '?', if the expression on the left side of ? is undefined, 
-      dont try to access the operations o the right side-->
+      dont try to access the operations o the right side--> 
     <!-- NOTE: Directives: gives some behaviors for the         DOM elements. *ngIf is a directive that
          gives IF behavior for the DOM element.
          Can also be writen like that: [ngIf]="student.isJedi" but the short way is mos commom.
          Syntax: *ngDirectiveName="Type script expression"
          That is better then use hidden property because the element is sended to DOM JUST if 
          the test return true -->
-      Jedi Temple: {{student.temple}}
+    Jedi Temple: {{student.temple}} <button (click)="description.focus()">Focus</button>
       <!-- To get the element reference in the TS code or calling directly from another element, use '#' before the dedired name.
         Like this: #description
         Therefor, you can call this elemente using the name 'description' to get in TS code. -->
-    <textarea #description></textarea> <button (click)="description.focus()">Focus</button>
     <br />
+    <textarea #description></textarea>
   </div>
 </div>
