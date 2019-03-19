@@ -15,7 +15,7 @@
             only the menu's item that users has been clicked.
             We should to put that on all items on menu.
           -->
-            <li routerLinkActive="active"><a href="#">Restaurantes</a></li>
+            <li routerLinkActive="active"><a [routerLink]="['/restaurants']">Restaurantes</a></li>
             <!-- routerLink: is an array that contais the path, since '/app', of the component we wish to show  -->
             <li routerLinkActive="active"><a [routerLink]="['/about']">Sobre</a></li>
         </ul>
