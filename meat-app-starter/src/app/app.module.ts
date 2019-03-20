@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component'
 import { ROUTES } from './app.routes';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
+import { RestautsService } from './restaurants/restaurants.service';
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { RestaurantComponent } from './restaurants/restaurant/restaurant.compone
     HttpModule,
     RouterModule.forRoot(ROUTES) //NOTES: It defines the array with root created in 'app/app.routes.ts'
   ],
-  providers: [],
+  providers: [RestautsService], //NOTES: It makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
