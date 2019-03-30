@@ -30,4 +30,10 @@ export class RestautsService implements OnInit {
                         .map(response => response.json())
                         .catch(ErrorHandler.handleError)
     }
+
+    getReviwesByRestaurant(restaurantId: string): Observable<any> {
+        return this.http.get(`${MEAT_API}/restaurants/${restaurantId}/reviews`)
+                        .map(response => response.json())
+                        .catch(ErrorHandler.handleError)
+    }
 }
