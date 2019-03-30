@@ -1,4 +1,6 @@
-<a href="#"> <!--NOTES: detail page will be implemented soon to change the href-->
+<a [routerLink]="['/restaurants', restaurant.id]"> 
+  <!--NOTES: Changed href for routerLink and passed the path of component and the id of cliked restaurant -->
+  <!-- Here i'm using the subcribe way to pass parameter thoug the routes with routerLink-->
   <div class="place-info-box">
     <span class="place-info-box-icon"><img [src]="restaurant.imagePath" /></span>
 

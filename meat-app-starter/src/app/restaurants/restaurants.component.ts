@@ -17,7 +17,7 @@ export class RestaurantsComponent implements OnInit {
   constructor(private restaurantsService: RestautsService) { }
 
   ngOnInit() {
-    this.restaurantsService.getRestaurants()
+    this.restaurantsService.getRestaurants() //NOTE: Reactive http call, subscrible executes only when the api answer
                            .subscribe(restaurants => this.restaurants = restaurants)
   }
 }

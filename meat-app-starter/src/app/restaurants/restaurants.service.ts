@@ -24,4 +24,10 @@ export class RestautsService implements OnInit {
                         //NOTE: catch is used to call a static function created in the default error handler, it pass a Response through the static function, that recieves and handles it
                         .catch(ErrorHandler.handleError)
     }
+
+    getRestaurantsByid(id: string): Observable<Restaurant> {
+        return this.http.get(`${MEAT_API}/restaurants/${id}`)
+                        .map(response => response.json())
+                        .catch(ErrorHandler.handleError)
+    }
 }
