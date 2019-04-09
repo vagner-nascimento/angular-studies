@@ -36,4 +36,10 @@ export class RestautsService implements OnInit {
                         .map(response => response.json())
                         .catch(ErrorHandler.handleError)
     }
+
+    getMenuOfRestaurant(restaurantId: string) {
+        return this.http.get(`${MEAT_API}/restaurants/${restaurantId}/menu`)
+                        .map(response => response.json())
+                        .catch(ErrorHandler.handleError)
+    }
 }
