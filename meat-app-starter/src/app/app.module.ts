@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +16,7 @@ import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shoppin
 import { MenuItemComponent } from './restaurant-detail/menu-item/menu-item.component';
 import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
+import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
 
 
 @NgModule({
@@ -38,7 +38,7 @@ import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component'
     HttpModule,
     RouterModule.forRoot(ROUTES) //NOTES: It defines the array with root created in 'app/app.routes.ts'
   ],
-  providers: [RestautsService], //NOTES: It makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
+  providers: [RestautsService, ShoppingCartService], //NOTES: It makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
   bootstrap: [AppComponent]
 })
 export class AppModule { }
