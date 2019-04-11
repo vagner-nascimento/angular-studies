@@ -18,8 +18,4 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.menu = this.restaurantService.getMenuOfRestaurant(this.route.parent.snapshot.params["id"])
   }
-  //NOTES: Mehod called in "menu-component.html"
-  addMenuItem(item: MenuItem) {
-    console.log(item)
-  }
 }

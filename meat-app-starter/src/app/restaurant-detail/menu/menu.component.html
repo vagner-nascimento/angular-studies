@@ -2,7 +2,8 @@
 <div class="col-md-9 col-xs-12">
    <mt-menu-item *ngFor="let item of menu | async" 
                   [menuItem]="item"
-                  (add)="addMenuItem($event)"></mt-menu-item>
+                  (add)="shoppingCart.addItem($event)"></mt-menu-item>
+   <!-- "shoppingCart.addItem($event)" will call the method on the shoping-cart component's TS file-->    
    <!-- NOTES: iterates by the date and send item though [menuItem] component's property.
         Remember, " | async" automatically async subcribes the observable and closes it eighter.
         (add)="addMenuItem($event): Calls the "addMenuItem", implemented in menu.component
@@ -11,5 +12,6 @@
           $event = RESERVED WORD TO SEND THE CURRENT CLICKED ITEM DATA -->
 </div>
 <div class="col-md-3 col-xs-12">
-  <mt-shopping-cart></mt-shopping-cart>
+  <!--#shoppingCart is a Template Variable, though this, it can be called by this alias in this file -->
+  <mt-shopping-cart #shoppingCart></mt-shopping-cart>
 <div>
