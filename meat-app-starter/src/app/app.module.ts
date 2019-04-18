@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import{ FormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -18,7 +19,6 @@ import { MenuComponent } from './restaurant-detail/menu/menu.component';
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
 import { OrderComponent } from './order/order.component';
-
 
 @NgModule({
   declarations: [
@@ -38,7 +38,8 @@ import { OrderComponent } from './order/order.component';
   imports: [
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(ROUTES) //NOTES: It defines the array with root created in 'app/app.routes.ts'
+    RouterModule.forRoot(ROUTES), //NOTES: It defines the array with root created in 'app/app.routes.ts'
+    FormsModule //NOTES FORMS MODULE: It is necessary to use the directive ngModule, used in form's validations
   ],
   //NOTES: 'providers' makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
   //NOTES: {provide: &Resource, useValue: &Source} is a extended way to declare providers
