@@ -18,3 +18,5 @@ import 'core-js/es6/reflect';
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 
+import 'intl' //NOTES: Internalization of currency to pt-BR. This package should to be imported on package.json
+import 'intl/locale-data/jsonp/pt-BR.js'

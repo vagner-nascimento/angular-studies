@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
@@ -38,7 +38,12 @@ import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-
     HttpModule,
     RouterModule.forRoot(ROUTES) //NOTES: It defines the array with root created in 'app/app.routes.ts'
   ],
-  providers: [RestautsService, ShoppingCartService], //NOTES: It makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
+  //NOTES: 'providers' makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
+  //NOTES: {provide: &Resource, useValue: &Source} is a extended way to declare providers
+  //  when you declare just calling interface, it mades, behind the scenes, the same thing:
+  //  {provide: RestautsService, useClass: RestautsService}
+  //NOTES: setting LOCALE_ID as provider makes that Angular provide this token with setted value every time when some resource uses it.
+  providers: [RestautsService, ShoppingCartService, {provide: LOCALE_ID, useValue: "pt-BR"}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
