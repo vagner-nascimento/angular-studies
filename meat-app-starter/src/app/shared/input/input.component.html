@@ -1,0 +1,19 @@
+<!-- NOTES PROPERTY BIND AND FORM VALIDATION VISUAL FEEDBACK:
+  1) You can change classes through property binding
+  2) Binding the classes, you'll be able to aplly it or not using a bollean expression
+  3) #input="ngModel" creates a variable called 'input' with ngModel attributed to it 
+      In this case, the ngModel of address field -->
+
+<!-- NOTES CONTENT PROJECTION:
+  1) Enables parent component to pass attributes to this component 
+  2) Makes component a container that will be used to replace content on the page
+  3) This method manipulates only visual features, the input is passed by the parent component
+  4) Uses Angular's tag '<ng-content>' to make it happen -->
+<div class="form-group" [class.has-success]="hasSuccess()" [class.has-error]="hasError()">
+  <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> {{label}}</label>  
+  
+  <ng-content></ng-content>
+
+  <span class="help-block" *ngIf="hasSuccess()"><i class="fa fa-check"></i> Ok</span>
+  <span class="help-block" *ngIf="hasError()"><i class="fa fa-remove"></i> {{errorMessage}}</span>
+</div>
