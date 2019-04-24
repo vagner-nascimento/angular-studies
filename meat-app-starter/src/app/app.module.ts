@@ -45,7 +45,7 @@ import { OrderComponent } from './order/order.component';
   //NOTES: {provide: &Resource, useValue: &Source} is a extended way to declare providers
   //  when you declare just calling interface, it mades, behind the scenes, the same thing:
   //  {provide: RestautsService, useClass: RestautsService}
-  //NOTES: setting LOCALE_ID as provider makes that Angular provide this token with setted value every time when some resource uses it.
+  //NOTES: setting LOCALE_ID as provider makes that Angular provide this token with setted value every time when some resource use it.
   providers: [RestautsService, ShoppingCartService, {provide: LOCALE_ID, useValue: "pt-BR"}],
   bootstrap: [AppComponent]
 })
