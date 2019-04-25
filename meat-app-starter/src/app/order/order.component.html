@@ -4,8 +4,8 @@
 <section class="content">
   <section class="invoice">
     
-    isValid: {{form.valid | json}}
-    {{form.value | json}}
+    isValid: {{form.valid | json}} <br/>
+    formValues: {{form.value | json}}
 
         <!-- NOTES ABOUT NGFORM ANG NGMODEL
             1) novalidate desable browser default validatiom template. It makes the angular uniformize the template.
@@ -111,7 +111,12 @@
               <p class="lead">Formas de Pagamento:</p>
 
                 <div class="form-group">
-                  <mt-radio [options]="paymentOtions"></mt-radio>
+                  <!-- NOTES CONTROL VALUE ACCESSOR 
+                        1) For this component have access of the value of the radio child component 
+                            by Control Value Accessor(previously implemented on the mt-radio component)
+                            you must to give a name to him and add ngModel directive as well.
+                  -->
+                  <mt-radio [options]="paymentOtions" name="paymentOption" ngModel></mt-radio>
                 </div>
 
             </div>
