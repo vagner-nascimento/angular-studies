@@ -56,51 +56,24 @@
             <div class="col-xs-12">
               <p class="lead">Itens do Pedido:</p>
             </div>
-            <div class="col-xs-12 table-responsive">
+            <!-- NOTES EVENT EMMITER
+                  1) (increaseQty)="increaseQty($event)" :
+                      - '(increaseQty)' = is the EventEmitter variable in the order-items component,
+                            which is emited by the emitIncreaseQty, called by on button's click event
+                      
+                      - "increaseQty($event)" = increaseQty method on the order component(this),
+                            which calls the order service to manipulate the list of itens contained on the CartService,
+                            which is encapsulated by injection in the OrderService
 
-              <table class="table table-striped">
-                <thead>
-                <tr>
-                  <th class="text-center">Quantidade</th>
-                  <th>Item</th>
-                  <th>Descrição</th>
-                  <th class="text-right">Subtotal</th>
-                  <th class="text-right"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td class="text-center">
-                    <a class="btn btn-sm"><i class="fa fa-minus"></i></a>
-                    1
-                    <a class="btn btn-sm"><i class="fa fa-plus"></i></a>
-                  </td>
-                  <td>Cup Cake</td>
-
-                  <td>Recheado com doce de leite</td>
-                  <td class="text-right">R$ 10,00</td>
-                  <td class="text-right">
-                    <a class="btn btn-sm danger"><i class="fa fa-remove"></i></a>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="text-center">
-                    <a class="btn btn-sm"><i class="fa fa-minus"></i></a>
-                    1
-                    <a class="btn btn-sm"><i class="fa fa-plus"></i></a>
-                  </td>
-                  <td>Croissant</td>
-
-                  <td>Recheado com presunto e queijo</td>
-                  <td class="text-right">R$ 10,00</td>
-                  <td class="text-right">
-                    <a class="btn btn-sm danger "><i class="fa fa-remove"></i></a>
-                  </td>
-                </tr>
-
-                </tbody>
-              </table>
-            </div>
+                      - $event = clicked CartItem in the list of itens in the order-component
+                      
+                  2) With that you'll be able to pass a method, through his fater, that recieves the children element to handle in the $event variable.
+                  3) The 'emit' method of EventEmitter makes this call.
+            -->
+              <mt-order-items [items]="cartItems()"
+                              (increaseQty)="increaseQty($event)"
+                              (decreaseQty)="decreaseQty($event)"
+                              (remove)="remove($event)"></mt-order-items>
             <!-- /.col -->
           </div>
           <!-- /.row -->
@@ -123,23 +96,9 @@
             <!-- /.col -->
             <div class="col-sm-6 col-xs-12">
               <p class="lead">Frete e Total:</p>
+              
+              <mt-delivery-costs></mt-delivery-costs>
 
-              <div class="table-responsive">
-                <table class="table">
-                  <tbody><tr>
-                    <th style="width:50%">Itens:</th>
-                    <td class="text-right">R$ 20,00</td>
-                  </tr>
-                  <tr>
-                    <th>Frete:</th>
-                    <td class="text-right">R$ 8,00</td>
-                  </tr>
-                  <tr>
-                    <th>Total:</th>
-                    <td class="text-right">R$ 28,00</td>
-                  </tr>
-                </tbody></table>
-              </div>
             </div>
             <!-- /.col -->
           </div>

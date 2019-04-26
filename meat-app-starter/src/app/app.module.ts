@@ -21,6 +21,9 @@ import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-
 import { OrderComponent } from './order/order.component';
 import { InputComponent } from './shared/input/input.component';
 import { RadioComponent } from './shared/radio/radio.component';
+import { OrderItemsComponent } from './order/order-items/order-items.component'
+import { OrderService } from './order/order.service';
+import { DeliveryCostsComponent } from './order/src/app/order/delivery-costs/delivery-costs.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,9 @@ import { RadioComponent } from './shared/radio/radio.component';
     ReviewsComponent,
     OrderComponent,
     InputComponent,
-    RadioComponent
+    RadioComponent,
+    OrderItemsComponent,
+    DeliveryCostsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,7 @@ import { RadioComponent } from './shared/radio/radio.component';
   //  when you declare just calling interface, it mades, behind the scenes, the same thing:
   //  {provide: RestautsService, useClass: RestautsService}
   //NOTES: setting LOCALE_ID as provider makes that Angular provide this token with setted value every time when some resource use it.
-  providers: [RestautsService, ShoppingCartService, {provide: LOCALE_ID, useValue: "pt-BR"}],
+  providers: [RestautsService, ShoppingCartService, OrderService, {provide: LOCALE_ID, useValue: "pt-BR"}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
