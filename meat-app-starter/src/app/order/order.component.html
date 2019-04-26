@@ -5,7 +5,8 @@
   <section class="invoice">
     
     isValid: {{form.valid | json}} <br/>
-    formValues: {{form.value | json}}
+    formValues: {{form.value | json}} <br />
+    itemsLen: {{cartItems().length}}
 
         <!-- NOTES ABOUT NGFORM ANG NGMODEL
             1) novalidate desable browser default validatiom template. It makes the angular uniformize the template.
@@ -89,7 +90,7 @@
                             by Control Value Accessor(previously implemented on the mt-radio component)
                             you must to give a name to him and add ngModel directive as well.
                   -->
-                  <mt-radio [options]="paymentOtions" name="paymentOption" ngModel></mt-radio>
+                  <mt-radio [options]="paymentOtions" name="paymentOption" ngModel required></mt-radio>
                 </div>
 
             </div>
@@ -97,7 +98,7 @@
             <div class="col-sm-6 col-xs-12">
               <p class="lead">Frete e Total:</p>
               
-              <mt-delivery-costs></mt-delivery-costs>
+              <mt-delivery-costs [delivery]="delivery" [itemsValue]="itemsValue()"></mt-delivery-costs>
 
             </div>
             <!-- /.col -->
@@ -107,7 +108,8 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button class="btn btn-success pull-right" [disabled]="!form.valid"><i class="fa fa-credit-card"></i> Concluir Pedido
+            <button class="btn btn-success pull-right" [disabled]="form.invalid || cartItems().length <= 0">
+              <i class="fa fa-credit-card"></i> Concluir Pedido
             </button>
           </div>
         </div>
