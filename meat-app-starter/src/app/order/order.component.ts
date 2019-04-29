@@ -3,6 +3,7 @@ import { RadioOption } from '../shared/radio/radio-option.model';
 import { OrderService } from './order.service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -19,7 +20,13 @@ export class OrderComponent implements OnInit {
     {label: 'Cartao Refeiçao', value: 'REF'}
   ]
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,
+              private router: Router) { }
+  /**
+   * NOTES ROUTER INSIDE THE CODE
+   * 1) With this injected Router we're abble to call his navigative method to redirect
+   *    the navigation to another component. E.g.: this.router.navigate(['/order-summary'])
+   */
 
   ngOnInit() {
   }
@@ -49,10 +56,9 @@ export class OrderComponent implements OnInit {
                            .map(ci => new OrderItem(ci.quantity, ci.menuItem.id))
 
     this.orderService.checkOrder(order).subscribe(orderId => {
+      this.router.navigate(['/order-summary'])
       console.info(`Compra concluída: ${orderId}`)
-      this.orderService.clear()      
+      this.orderService.clear()
     })
-
-    console.info(order)
   }  
 }

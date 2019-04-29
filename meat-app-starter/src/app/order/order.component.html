@@ -3,11 +3,11 @@
 
 <section class="content">
   <section class="invoice">
-    
-    isValid: {{form.valid | json}} <br/>
-    formValues: {{form.value | json}} <br />
-    itemsLen: {{cartItems().length}}
-        <!-- NOTES ABOUT NGFORM ANG NGMODEL
+        <!-- Form attributes:    
+          isValid: {{form.valid | json}} <br/>
+          formValues: {{form.value | json}} -->
+
+        <!-- NOTES NGFORM ANG NGMODEL
             1) novalidate desable browser default validatiom template. It makes the angular uniformize the template.
             2) #form="ngForm" (#form= is variable declaration) sets the ngForm of this form to the template variable named form
             3) for ngModel works in the elements, they should have "name" propertie informed
