@@ -7,7 +7,6 @@
     isValid: {{form.valid | json}} <br/>
     formValues: {{form.value | json}} <br />
     itemsLen: {{cartItems().length}}
-
         <!-- NOTES ABOUT NGFORM ANG NGMODEL
             1) novalidate desable browser default validatiom template. It makes the angular uniformize the template.
             2) #form="ngForm" (#form= is variable declaration) sets the ngForm of this form to the template variable named form
@@ -44,7 +43,7 @@
             <div class="col-sm-4 col-xs-6">
 
               <mt-input-container lable="Complemento">
-                <input name="optional" ngModel type="text" class="form-control" id="inputSuccess" placeholder="Complemento">
+                <input name="optionalAddress" ngModel type="text" class="form-control" id="inputSuccess" placeholder="Complemento">
               </mt-input-container>
               
             </div>
@@ -108,7 +107,7 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button class="btn btn-success pull-right" [disabled]="form.invalid || cartItems().length <= 0">
+            <button (click)="checkOrder(form.value)" class="btn btn-success pull-right" [disabled]="form.invalid || cartItems().length <= 0">
               <i class="fa fa-credit-card"></i> Concluir Pedido
             </button>
           </div>
