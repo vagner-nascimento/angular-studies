@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import{ FormsModule } from '@angular/forms'
+import{ FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -52,7 +52,8 @@ import { RatingComponent } from './shared/rating/rating.component';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES), //NOTES: It defines the array with root created in 'app/app.routes.ts'
-    FormsModule //NOTES FORMS MODULE: It is necessary to use the directive ngModule, used in form's validations
+    FormsModule, //NOTES FORMS MODULE: It is necessary to use the directive ngModule, used in form's validations
+    ReactiveFormsModule //NOTES REACTIVE FORMS: You must import this module to able to use ReactiveForms (specifically the FormBuilder class)
   ],
   //NOTES: 'providers' makes the DEPENDENCY INJECTION, then you going to able to use this class without instantiating it every time.
   //NOTES: {provide: &Resource, useValue: &Source} is a extended way to declare providers

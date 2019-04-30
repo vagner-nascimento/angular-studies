@@ -4,6 +4,7 @@ import { OrderService } from './order.service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -11,6 +12,8 @@ import { Router } from '@angular/router';
   templateUrl: './order.component.html'
 })
 export class OrderComponent implements OnInit {
+
+  orderForm: FormGroup
 
   delivery: number = 8
 
@@ -21,7 +24,12 @@ export class OrderComponent implements OnInit {
   ]
 
   constructor(private orderService: OrderService,
-              private router: Router) { }
+              private router: Router,
+              private formBuilder: FormBuilder) { }
+  /** NOTES FORMBUILDER - REACTIVE FORMS
+  *  1) It's a class that helps to create the reactive forms.
+  *  2) Must be injected for use.
+  */
   /**
    * NOTES ROUTER INSIDE THE CODE
    * 1) With this injected Router we're abble to call his navigative method to redirect
@@ -29,6 +37,15 @@ export class OrderComponent implements OnInit {
    */
 
   ngOnInit() {
+    this.orderForm = this.formBuilder.group({
+      name: "", //Short way to create a form's input, where "" is the initial value of input. It uses FormBuilder.contrlol() as well.
+      email: this.formBuilder.control(""), //Explicit way to create a form's input.
+      emailComfirm: this.formBuilder.control(""),
+      address: this.formBuilder.control(""),
+      number: this.formBuilder.control(""),
+      optionalAddress: this.formBuilder.control(""),
+      paymentOption: this.formBuilder.control("")
+     })
   }
 
   itemsValue(): number {

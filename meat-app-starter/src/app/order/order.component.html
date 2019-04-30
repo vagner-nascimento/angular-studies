@@ -12,8 +12,13 @@
             2) #form="ngForm" (#form= is variable declaration) sets the ngForm of this form to the template variable named form
             3) for ngModel works in the elements, they should have "name" propertie informed
             4) ngModel captures the field's value in real time and atulizes the ngForm (whole form)
+            OLD Template Form header: <form #form="ngForm" novalidate>
         -->
-        <form #form="ngForm" novalidate>
+        <!-- NOTES REACTIVE FORMS (New programmable way to build forms)
+             1) Uses [formGroup] and formControlName directives to associate html form with implemented reactive form.
+             2) "orderForm" is the name of created form on TS file.
+         -->
+        <form [formGroup]="orderForm" novalidate>
           <div class="row">
             <div class="col-xs-12">
               <h2 class="page-header">
@@ -22,28 +27,52 @@
             </div>
           </div>
 
-          <div class="row invoice-info">
+          <div class="row">
+            <div class="col-xs-12">
+                <p class="lead">Seus Dados:</p>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <mt-input-container label="Nome" errorMessage="Nome é obrigatório com no mínimo 5 caracteres">
+                <input formControlName="name" autocomplete="off" class="form-control" id="inputSuccess" placeholder="Nome" type="text">
+              </mt-input-container>
+            </div>
+
+            <div class="col-sm-2 col-xs-6">              
+                <mt-input-container lable="E-mail" errorMessage="E-mail é obrigatório">
+                  <input formControlName="email" autocomplete="off" type="text" class="form-control" id="inputSuccess" placeholder="E-mail">
+                </mt-input-container>  
+            </div>
+
+            <div class="col-sm-2 col-xs-6">
+                <mt-input-container lable="Confirmar e-mail" errorMessage="Confirmaçao de e-mail é obrigatória">
+                  <input formControlName="emailComfirm" autocomplete="off" type="text" class="form-control" id="inputSuccess" placeholder="Confirmar e-mail">
+                </mt-input-container>
+            </div>
+
+          </div>
+
+          <div class="row">
             <div class="col-xs-12"> 
               <p class="lead">Endereço de Entrega:</p>
             </div>
             <div class="col-sm-6 col-xs-12">
 
               <mt-input-container label="Endereço" errorMessage="Endereço é obrigatório com no mínimo 5 caracteres">
-                <input name="address" ngModel required autocomplete="off" minlength="5" type="text" class="form-control" id="inputSuccess" placeholder="Endereço">
+                <input formControlName="address" autocomplete="off" minlength="5" type="text" class="form-control" id="inputSuccess" placeholder="Endereço">
               </mt-input-container>
 
             </div>
             <div class="col-sm-2 col-xs-6">
               
               <mt-input-container lable="Número" errorMessage="Número é obrigatório">
-                <input name="number" ngModel required autocomplete="off" type="text" class="form-control" id="inputSuccess" placeholder="Número" pattern="^[0-9]*$">
+                <input formControlName="number" autocomplete="off" type="text" class="form-control" id="inputSuccess" placeholder="Número">
               </mt-input-container>
 
             </div>
             <div class="col-sm-4 col-xs-6">
 
               <mt-input-container lable="Complemento">
-                <input name="optionalAddress" ngModel type="text" class="form-control" id="inputSuccess" placeholder="Complemento">
+                <input formControlName="optionalAddress" type="text" class="form-control" id="inputSuccess" placeholder="Complemento">
               </mt-input-container>
               
             </div>
@@ -89,7 +118,7 @@
                             by Control Value Accessor(previously implemented on the mt-radio component)
                             you must to give a name to him and add ngModel directive as well.
                   -->
-                  <mt-radio [options]="paymentOtions" name="paymentOption" ngModel required></mt-radio>
+                  <mt-radio [options]="paymentOtions" formControlName="paymentOption"></mt-radio>
                 </div>
 
             </div>
@@ -107,7 +136,7 @@
 
         <div class="row">
           <div class="col-xs-12">
-            <button (click)="checkOrder(form.value)" class="btn btn-success pull-right" [disabled]="form.invalid || cartItems().length <= 0">
+            <button (click)="checkOrder(orderForm.value)" class="btn btn-success pull-right" [disabled]="orderForm.invalid || cartItems().length <= 0">
               <i class="fa fa-credit-card"></i> Concluir Pedido
             </button>
           </div>

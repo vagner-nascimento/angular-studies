@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, ContentChild, AfterContentInit } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { Component, OnInit, Input, ContentChild, AfterContentInit } from '@angular/core'
+import { NgModel, FormControlName } from '@angular/forms'
 
 @Component({
   selector: 'mt-input-container',
@@ -18,6 +18,7 @@ export class InputComponent implements OnInit, AfterContentInit {
         Ex.: <mt-input-container><input name='n' ngModel /></mt-input-container>
   */
   @ContentChild(NgModel) model: NgModel
+  @ContentChild(FormControlName) control: FormControlName
 
   constructor() { }
 
@@ -29,18 +30,18 @@ export class InputComponent implements OnInit, AfterContentInit {
     2) This method is called after component's content initialization
   */
   ngAfterContentInit(): void {
-    if(this.model === undefined) {
-      throw new Error("This component demands a ngModel directive on the input");
-    }
+    this.input = this.model || this.control
 
-    this.input = this.model;
+    if(this.input === undefined) {
+      throw new Error("This component demands a NgModel or FormControlName directive on the input")
+    }
   }
 
   hasSuccess(): boolean {
-    return this.input.valid && (this.input.dirty || this.input.touched);
+    return this.input.valid && (this.input.dirty || this.input.touched)
   }
 
   hasError(): boolean {
-    return this.input.invalid && (this.input.dirty || this.input.touched);
+    return this.input.invalid && (this.input.dirty || this.input.touched)
   }
 }
